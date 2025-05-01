@@ -9,7 +9,7 @@
     - [Trigger prototypes](#trigger-prototypes)
   - [Usage](#usage)
 
-Tested on Zabbix 6.0.7 and Proxmox Backup Server 2.2
+Tested on Zabbix 7.0.12 and Proxmox Backup Server 3.4
 
 ## Macros
 
