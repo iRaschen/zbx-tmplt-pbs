@@ -384,10 +384,13 @@ zabbix_export:
             - type: JSONPATH
               parameters:
                 - '$.data[?(@.worker_type == ''backup'')].first()'
-              error_handler: DISCARD_VALUE
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
             - type: JSONPATH
               parameters:
                 - $.endtime
+              error_handler: CUSTOM_VALUE
+              error_handler_params: '0'
             - type: DISCARD_UNCHANGED_HEARTBEAT
               parameters:
                 - '300'
