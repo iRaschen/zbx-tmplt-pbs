@@ -7,6 +7,18 @@ zabbix_export:
     - uuid: 9425adf0d5f94665be22c664e44436a1
       template: 'Proxmox Backup Server by HTTP'
       name: 'Proxmox Backup Server by HTTP'
+      description: |
+        Issue new token in Configuraion -> Access Control -> API Token
+        Add API Token permission Audit to /datastore, /system/status and /system/tasks in Configuraion -> Access Control -> Permissions (Please note that the user on whose behalf the token is issued must have the appropriate rights)
+        Import zbx_tmplt_pbs.yaml to Zabbix
+        Attach new template Proxmox Backup Server by HTTP to host
+          Configure macros:
+            {$PBS.NODE.NAME}
+            {$PBS.TOKEN.ID}
+            {$PBS.TOKEN.SECRET}
+      vendor:
+        name: Raschen
+        version: 7.0-0
       groups:
         - name: 'Templates/Operating systems'
       items:
@@ -534,6 +546,11 @@ zabbix_export:
           lld_macro_paths:
             - lld_macro: '{#DATASTORE}'
               path: $.store
+      tags:
+        - tag: class
+          value: software
+        - tag: target
+          value: proxmox
       macros:
         - macro: '{$PBS.CPU.PUSE.MAX.WARN}'
           value: '90'
